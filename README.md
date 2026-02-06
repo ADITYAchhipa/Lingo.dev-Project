@@ -1,8 +1,11 @@
 # 🌐 **Meetio**  
 
-## 🌍 Seamless Video Conferencing with Real-Time Translation  
 
----
+## 🌍 Seamless Video Conferencing with Real-Time Translation  
+<br>
+
+
+
 
 ## 💡 About The Project  
 
@@ -10,27 +13,26 @@
 
 By integrating **real-time translation** into chat, live captions, and collaborative notes, participants can communicate naturally in their own language.
 
----
-
-
 
 ---
+
+<br>
 
 # 🚀 Key Features  
 
----
 
-## 🗣️ Real-Time Live Captions  
+## 🗣️ Real-Time Live Captions
 
-Understanding different accents and languages can be challenging.
+> Understanding different accents and languages can be challenging.  
+>  
+> TalentIQ provides **live translated captions** for every speaker.  
+>  
+> - ⚡ **Instant Translation** — Speak in Hindi, a Spanish user reads Spanish captions  
+> - 🎙️ **Accent Handling** — Advanced speech recognition adapts to various accents  
+> - ♿ **Accessibility** — Inclusive for hearing-impaired users and non-native speakers  
 
-TalentIQ provides **live translated captions** for every speaker.
+<br>
 
-- ⚡ **Instant Translation** — Speak in Hindi, a Spanish user reads Spanish captions  
-- 🎙️ **Accent Handling** — Advanced speech recognition adapts to various accents  
-- ♿ **Accessibility** — Inclusive for hearing-impaired users and non-native speakers  
-
----
 
 ## 💬 Multilingual Chat Translation  
 
@@ -41,6 +43,8 @@ No more switching tabs to translation tools.
 
 ---
 
+<br>
+
 ## 📝 Collaborative Translated Notes  
 
 Never miss key information during meetings.
@@ -49,7 +53,10 @@ Never miss key information during meetings.
 - 🌎 **Personalized View** — Same notes displayed in each user’s selected language  
 - 🔄 **Zero Information Loss** — Notes sync and translate instantly  
 
+
 ---
+
+<br>
 
 ## 📹 Crystal Clear Video Calls  
 
@@ -58,6 +65,8 @@ Never miss key information during meetings.
 - 🙌 **Interactive Tools** — Raise hand, screen sharing, reactions  
 
 ---
+
+<br>
 
 # 🏗️ System Architecture  
 
@@ -84,7 +93,6 @@ end
 
 subgraph Backend [Node.js Cluster]
 SocketServer
-
 Trans["Lingo Translation Service"]:::ai
 DB[("MongoDB")]:::db
 end
@@ -92,15 +100,14 @@ end
 UserA -- Audio/Video --> StreamSDK["Stream.io Servers"]:::video
 StreamSDK -- Audio/Video --> UserB
 
+
+SocketServer -- "Sync Update (es)" --> UserB
+
+%% --- SPEECH FLOW SECOND (renders below) ---
 Speech -- "Audio Text (en)" --> SocketServer
 SocketServer -- "Translate (en→es)" --> Trans
 Trans -- "Translated Text (es)" --> SocketServer
 SocketServer -- "Caption (es)" --> UserB
-
-Editor -- "Note Update (en)" --> SocketServer
-SocketServer -- "Translate (en→es)" --> Trans
-Trans -- "Translated Note (es)" --> SocketServer
-SocketServer -- "Sync Update (es)" --> UserB
 
 classDef user fill:#E1F5FE,stroke:#1E88E5,stroke-width:2px,color:#0D47A1;
 classDef frontend fill:#E8F5E9,stroke:#43A047,stroke-width:2px,color:#1B5E20;
@@ -108,6 +115,7 @@ classDef server fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px,color:#E65100;
 classDef ai fill:#F3E5F5,stroke:#8E24AA,stroke-width:2px,color:#4A148C;
 classDef db fill:#ECEFF1,stroke:#546E7A,stroke-width:2px,color:#263238;
 classDef video fill:#FBE9E7,stroke:#F4511E,stroke-width:2px,color:#BF360C;
+
 ```
 # 📁 Project Structure
 
@@ -144,7 +152,6 @@ talentiq/
 
 Follow these steps to set up the project locally.
 
----
 ## 1️⃣ Clone the Repository
 
 ```bash
@@ -198,12 +205,14 @@ npm run dev
 ```
 Runs on http://localhost:5173
 
-
+---
 
 ## 🧪 Future Improvements
+```bash
 
+ 🌍 Add more supported languages
+ 🤖 Improve AI accent detection
+ 📱 Mobile application support
+ 📊 Meeting analytics dashboard
 
-### 🌍 Add more supported languages
-### 🤖 Improve AI accent detection
-### 📱 Mobile application support
-### 📊 Meeting analytics dashboard
+```
