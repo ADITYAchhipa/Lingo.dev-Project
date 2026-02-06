@@ -1,6 +1,7 @@
 # 🌐 **TalentIQ (Meetio)**  
 
-## 🏆 Winner Hackathon Project  
+
+
 ## 🌍 Seamless Video Conferencing with Real-Time Translation  
 
 ---
