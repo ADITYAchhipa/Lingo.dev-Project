@@ -108,3 +108,102 @@ classDef server fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px,color:#E65100;
 classDef ai fill:#F3E5F5,stroke:#8E24AA,stroke-width:2px,color:#4A148C;
 classDef db fill:#ECEFF1,stroke:#546E7A,stroke-width:2px,color:#263238;
 classDef video fill:#FBE9E7,stroke:#F4511E,stroke-width:2px,color:#BF360C;
+```
+# 📁 Project Structure
+
+```text
+talentiq/
+|
+├── backend/
+|   ├── controllers/        # Business logic
+|   ├── routes/             # API routes
+|   ├── middleware/         # Auth & error middleware
+|   ├── services/           # Translation & external services
+|   ├── models/             # MongoDB schemas
+|   ├── socket/             # Socket.IO event handlers
+|   ├── config/             # DB and environment configs
+|   └── server.js           # Backend entry point
+|
+├── frontend/
+|   ├── src/
+|   |   ├── components/     # UI components
+|   |   ├── pages/          # App pages
+|   |   ├── hooks/          # Custom React hooks
+|   |   ├── context/        # Global state
+|   |   ├── services/       # API & socket services
+|   |   └── main.jsx        # Frontend entry point
+|   └── vite.config.js
+|
+├── .env.example
+└── README.md
+```
+
+---
+
+# ⚙️ Installation Guide
+
+Follow these steps to set up the project locally.
+
+---
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/talentiq.git
+cd talentiq
+```
+## 2️⃣ Install Dependencies
+```bash
+npm install
+cd backend && npm install
+cd ../frontend && npm install
+```
+
+## 🔐 Environment Variables
+# Create .env files in both backend/ and frontend/ directories.
+
+📌 Backend .env
+```bash
+
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+STREAM_API_KEY=your_stream_key
+LINGO_API_KEY=your_translation_service_key
+
+```
+📌 Frontend .env
+```bash
+
+VITE_BACKEND_URL=http://localhost:5000
+VITE_STREAM_API_KEY=your_stream_key
+
+
+```
+
+## ▶️ Running the Application
+🚀 Start Backend Server
+
+```bash
+cd backend
+npm start
+```
+Runs on http://localhost:5000
+
+## 💻 Start Frontend
+
+```bash
+cd frontend
+npm run dev
+
+```
+Runs on http://localhost:5173
+
+
+
+## 🧪 Future Improvements
+
+
+### 🌍 Add more supported languages
+### 🤖 Improve AI accent detection
+### 📱 Mobile application support
+### 📊 Meeting analytics dashboard
