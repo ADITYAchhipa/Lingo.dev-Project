@@ -28,40 +28,85 @@ Missing information during a meeting is a thing of the past.
 - **Secure Sessions:** End-to-end encrypted signals for privacy.
 - **Interactive:** Raise hand, screen sharing, and reaction features.
 
-## 🏗️ System Architecture
+# 🏗️ System Architecture  
 
-Our architecture handles real-time data streams for video, audio, and text synchronization, orchestrating translation services on the fly.
-
+Our system handles **real-time streams for video, audio, and text** while orchestrating translation services dynamically.
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {
+  'primaryColor': '#E3F2FD',
+  'primaryBorderColor': '#1E88E5',
+  'primaryTextColor': '#0D47A1',
+  'lineColor': '#455A64',
+  'fontSize': '16px'
+}}}%%
+
 graph TD
-    UserA[User A (English)] <-->|WebSocket| SocketServer[Socket.IO Server]
-    UserB[User B (Spanish)] <-->|WebSocket| SocketServer
-    
-    subgraph Frontend [React PWA]
-        UI[Video Interface]
-        Speech[Web Speech API]
-        Editor[Quill Editor]
-    end
 
-    subgraph Backend [Node.js Cluster]
-        SocketServer
-        Auth[Auth Service]
-        Trans[Lingo Translation Service]
-        DB[(MongoDB)]
-    end
+UserA["User A (English)"]:::user <-->|WebSocket| SocketServer["Socket.IO Server"]:::server
+UserB["User B (Spanish)"]:::user <-->|WebSocket| SocketServer
 
-    UserA -- Audio/Video --> StreamSDK[Stream.io Servers] -- Audio/Video --> UserB
-    
-    Speech -- "Audio Text (en)" --> SocketServer
-    SocketServer -- "Translate (en->es)" --> Trans
-    Trans -- "Translated Text (es)" --> SocketServer
-    SocketServer -- "Caption (es)" --> UserB
-    
-    Editor -- "Note Update (en)" --> SocketServer
-    SocketServer -- "Translate (en->es)" --> Trans
-    Trans -- "Translated Note (es)" --> SocketServer
-    SocketServer -- "Sync Update (es)" --> UserB
+subgraph Frontend [React PWA]
+UI["Video Interface"]:::frontend
+Speech["Web Speech API"]:::frontend
+Editor["Quill Editor"]:::frontend
+end
+
+subgraph Backend [Node.js Cluster]
+SocketServer
+Trans["Lingo Translation Service"]:::ai
+DB[("MongoDB")]:::db
+end
+
+UserA -- Audio/Video --> StreamSDK["Stream.io Servers"]:::video
+StreamSDK -- Audio/Video --> UserB
+
+
+SocketServer -- "Sync Update (es)" --> UserB
+
+%% --- SPEECH FLOW SECOND (renders below) ---
+Speech -- "Audio Text (en)" --> SocketServer
+SocketServer -- "Translate (en→es)" --> Trans
+Trans -- "Translated Text (es)" --> SocketServer
+SocketServer -- "Caption (es)" --> UserB
+
+classDef user fill:#E1F5FE,stroke:#1E88E5,stroke-width:2px,color:#0D47A1;
+classDef frontend fill:#E8F5E9,stroke:#43A047,stroke-width:2px,color:#1B5E20;
+classDef server fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px,color:#E65100;
+classDef ai fill:#F3E5F5,stroke:#8E24AA,stroke-width:2px,color:#4A148C;
+classDef db fill:#ECEFF1,stroke:#546E7A,stroke-width:2px,color:#263238;
+classDef video fill:#FBE9E7,stroke:#F4511E,stroke-width:2px,color:#BF360C;
+
 ```
+# 📁 Project Structure
+
+```text
+talentiq/
+|
+├── backend/
+|   ├── controllers/        # Business logic
+|   ├── routes/             # API routes
+|   ├── middleware/         # Auth & error middleware
+|   ├── services/           # Translation & external services
+|   ├── models/             # MongoDB schemas
+|   ├── socket/             # Socket.IO event handlers
+|   ├── config/             # DB and environment configs
+|   └── server.js           # Backend entry point
+|
+├── frontend/
+|   ├── src/
+|   |   ├── components/     # UI components
+|   |   ├── pages/          # App pages
+|   |   ├── hooks/          # Custom React hooks
+|   |   ├── context/        # Global state
+|   |   ├── services/       # API & socket services
+|   |   └── main.jsx        # Frontend entry point
+|   └── vite.config.js
+|
+├── .env.example
+└── README.md
+```
+
+---
 
 ## 🛠️ Technology Stack
 
