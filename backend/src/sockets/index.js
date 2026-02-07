@@ -63,7 +63,7 @@ export function initializeSocketServer(httpServer) {
 
                 // CRITICAL: Always broadcast the original text first!
                 // This ensures basic syncing works even if translation service fails.
-                io.to(meetingId).emit("note:translated", {
+                socket.to(meetingId).emit("note:translated", {
                     language: canonicalLanguage,
                     text: plainText,
                     html: html || plainText,
@@ -100,6 +100,23 @@ export function initializeSocketServer(httpServer) {
             } catch (error) {
                 console.error("Note update error:", error);
                 socket.emit("note:error", { message: "Failed to update note" });
+            }
+        });
+
+        // Get initial note (for new joiners or page refresh)
+        socket.on("note:get", async (data) => {
+            const { meetingId, language } = data;
+            try {
+                const noteData = await notesService.getNoteWithTranslation(meetingId, language);
+                if (noteData) {
+                    socket.emit("note:initial", {
+                        text: noteData.content,
+                        html: noteData.contentHTML,
+                        language: noteData.language
+                    });
+                }
+            } catch (error) {
+                console.error("Error fetching note:", error);
             }
         });
 
@@ -148,7 +165,7 @@ export function initializeSocketServer(httpServer) {
 
         // Chat: Send message with translation
         socket.on("chat:send", async (data) => {
-            const { meetingId, userId, userName, text, language } = data;
+            const { meetingId, userId, userName, text, language, clientMessageId } = data;
 
             try {
                 // Create message object with translations map
@@ -204,6 +221,7 @@ export function initializeSocketServer(httpServer) {
                     originalLanguage: language,
                     translations: Object.fromEntries(translations),
                     createdAt: chatMessage.createdAt,
+                    clientMessageId // Pass back for optimistic UI updates
                 });
 
                 console.log(`Chat message sent by ${userName} in meeting ${meetingId}`);
@@ -249,73 +267,72 @@ export function initializeSocketServer(httpServer) {
             console.log(`Received audio chunk from ${speakerUserId} in meeting ${meetingId}`);
         });
 
-        // Caption event (if using client-side STT or sending pre-transcribed text)
-        socket.on("caption:send", async (data) => {
-            const { meetingId, speakerUserId, speakerName, text, language, isFinal } = data;
+        // NEW: Real-time speech monitoring & translation handler
+        socket.on("speech:monitor", async (data) => {
+            console.log("🎤 Speech monitor event received:", { userId: socket.handshake.auth?.userId, text: data.text });
+            const { meetingId, text, isFinal, language, utteranceId } = data;
 
-            try {
-                // Get speaker name from socket auth if not provided
-                const displayName = speakerName || socket.handshake.auth?.userName || "Participant";
+            // 1. Broadcast RAW speech to everyone else immediately (Low Latency)
+            socket.to(meetingId).emit("speech:incoming", {
+                speakerUserId: socket.handshake.auth?.userId, // Secure ID from auth
+                speakerName: socket.handshake.auth?.userName || "Participant",
+                text,
+                isFinal,
+                originalLanguage: language,
+                utteranceId,
+                timestamp: new Date()
+            });
 
-                // Get target languages from in-memory participants (real-time data)
-                const participantsInMeeting = meetingParticipants.get(meetingId);
-                const targetLanguages = new Set();
+            // 2. If Final, perform translation asynchronously
+            if (isFinal) {
+                try {
+                    const participants = meetingParticipants.get(meetingId);
+                    const targetLanguages = new Set();
 
-                if (participantsInMeeting && participantsInMeeting.size > 0) {
-                    for (const [, participant] of participantsInMeeting) {
-                        if (participant.language && participant.language !== language) {
-                            targetLanguages.add(participant.language);
+                    if (participants) {
+                        for (const [, p] of participants) {
+                            if (p.language && p.language !== language) {
+                                targetLanguages.add(p.language);
+                            }
                         }
                     }
-                }
 
-                // Translate to other participant languages
-                let translations = [];
-                if (targetLanguages.size > 0 && isFinal) {
-                    try {
+                    if (targetLanguages.size > 0) {
+                        // Async translation - does not block the raw broadcast
                         const translatedTexts = await lingoService.translateText(
                             text,
                             language,
                             Array.from(targetLanguages)
                         );
-                        translations = Object.entries(translatedTexts).map(([lang, translatedText]) => ({
+
+                        // Broadcast translations
+                        const translations = Object.entries(translatedTexts).map(([lang, txt]) => ({
                             language: lang,
-                            text: translatedText,
+                            text: txt
                         }));
-                    } catch (translateError) {
-                        console.error("Caption translation error:", translateError);
-                        // Continue without translations
-                    }
-                }
 
-                // Broadcast captions to all participants immediately
-                io.to(meetingId).emit("caption:incoming", {
-                    speakerUserId,
-                    speakerName: displayName,
-                    originalText: text,
-                    originalLanguage: language,
-                    translations,
-                    isFinal,
-                    timestamp: new Date(),
-                });
+                        // Emit separate translation event
+                        io.to(meetingId).emit("translation:incoming", {
+                            utteranceId, // Link back to original speech
+                            translations,
+                            originalText: text, // Context
+                            timestamp: new Date()
+                        });
 
-                // Optionally save to database for history (only final captions)
-                if (isFinal) {
-                    try {
-                        await captionsService.saveCaptionWithTranslations(
-                            meetingId,
-                            speakerUserId,
-                            text,
-                            language,
-                            isFinal
-                        );
-                    } catch (saveError) {
-                        console.error("Caption save error:", saveError);
-                        // Don't block the broadcast if save fails
+                        // Save to DB
+                        try {
+                            await captionsService.saveCaptionWithTranslations(
+                                meetingId,
+                                socket.handshake.auth?.userId,
+                                text,
+                                language,
+                                true // isFinal
+                            );
+                        } catch (e) { console.error("DB Save failed", e); }
                     }
+                } catch (err) {
+                    console.error("Translation error:", err);
                 }
-            } catch (error) {
-                console.error("Caption error:", error);
             }
         });
 
@@ -345,8 +362,28 @@ export function initializeSocketServer(httpServer) {
             }
         });
 
+        // Join dashboard room to receive global updates
+        socket.on("dashboard:subscribe", () => {
+            socket.join("dashboard");
+            console.log(`Socket ${socket.id} subscribed to dashboard updates`);
+        });
+
+        socket.on("dashboard:unsubscribe", () => {
+            socket.leave("dashboard");
+            console.log(`Socket ${socket.id} unsubscribed from dashboard updates`);
+        });
+
         socket.on("disconnect", () => {
             console.log("Client disconnected:", socket.id);
+            // Clean up from all meeting participant lists
+            for (const [meetingId, participants] of meetingParticipants) {
+                if (participants.has(socket.id)) {
+                    participants.delete(socket.id);
+                    if (participants.size === 0) {
+                        meetingParticipants.delete(meetingId);
+                    }
+                }
+            }
         });
     });
 
@@ -358,4 +395,28 @@ export function getIO() {
         throw new Error("Socket.io not initialized");
     }
     return io;
+}
+
+// Broadcast session created event to all dashboard subscribers
+export function broadcastSessionCreated(session) {
+    if (io) {
+        io.to("dashboard").emit("session:created", { session });
+        console.log(`Broadcasted session:created for ${session._id}`);
+    }
+}
+
+// Broadcast session updated event
+export function broadcastSessionUpdated(session) {
+    if (io) {
+        io.to("dashboard").emit("session:updated", { session });
+        console.log(`Broadcasted session:updated for ${session._id}`);
+    }
+}
+
+// Broadcast session ended event
+export function broadcastSessionEnded(sessionId) {
+    if (io) {
+        io.to("dashboard").emit("session:ended", { sessionId });
+        console.log(`Broadcasted session:ended for ${sessionId}`);
+    }
 }

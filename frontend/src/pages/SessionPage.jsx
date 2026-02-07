@@ -5,14 +5,13 @@ import { useTranslation } from "react-i18next";
 import { useEndSession, useSessionById } from "../hooks/useSessions";
 import { useSocket } from "../hooks/useSocket";
 import { useLanguage } from "../hooks/useLanguage";
-import { useSpeechRecognition } from "../hooks/useSpeechRecognition";
+import { useRealTimeTranslations } from "../hooks/useRealTimeTranslations";
 import useStreamClient from "../hooks/useStreamClient";
 import Navbar from "../components/Navbar";
 import MeetingNotesPanel from "../components/meeting/MeetingNotesPanel";
 import CaptionOverlay from "../components/meeting/CaptionOverlay";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
-
 // Stream.io Video SDK
 import {
   StreamVideo,
@@ -21,6 +20,7 @@ import {
   SpeakerLayout,
   CallControls,
   CallingState,
+  useCall,
   useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
@@ -39,6 +39,8 @@ import {
   HandIcon,
   MonitorUp,
   PhoneOff,
+  Volume2Icon,
+  VolumeXIcon,
 } from "lucide-react";
 import ChatPanel from "../components/meeting/ChatPanel";
 import toast from "react-hot-toast";
@@ -62,29 +64,34 @@ function SessionPage() {
     user
   );
 
-  // Socket connection (Use corrected user properties)
+  // Ensure we have a user identity (handling Guests)
+  const guestUserRef = useRef({
+    id: `guest-${Math.random().toString(36).substr(2, 9)}`,
+    name: "Guest"
+  });
+  const effectiveUser = user || guestUserRef.current;
   const {
     socket,
     isConnected,
     joinMeeting,
-    sendCaption,
+    sendCaption, // Legacy, can be ignored or removed
     endMeeting,
     raiseHand,
     updateLanguage
-  } = useSocket(user?.id, user?.fullName || user?.name);
+  } = useSocket(effectiveUser?.id, effectiveUser?.fullName || effectiveUser?.name);
 
-  // Speech recognition for live captions
+  // NEW: Real-time Translations Hook
   const {
-    isListening,
-    transcript,
-    interimTranscript,
-    isSupported: speechSupported,
     startListening,
     stopListening,
+    isListening,
+    captions,
+    // transcript, interimTranscript removed/merged into captions
     resetTranscript,
-  } = useSpeechRecognition(language);
+    error: speechError,
+    simulateCaption
+  } = useRealTimeTranslations(socket, sessionId, effectiveUser?.fullName || effectiveUser?.name || "Participant", language, effectiveUser?.id);
 
-  const [captions, setCaptions] = useState([]);
   const [showCaptions, setShowCaptions] = useState(true);
   const [participants, setParticipants] = useState([]);
   const lastTranscriptRef = useRef("");
@@ -93,10 +100,13 @@ function SessionPage() {
 
   // Join meeting when connected
   useEffect(() => {
-    if (socket && isConnected && sessionId && user) {
+    if (socket && isConnected && sessionId) {
+      console.log("Joing meeting:", sessionId, "as", effectiveUser?.id);
       joinMeeting(sessionId, language);
+    } else {
+      console.log("Waiting to join meeting...", { socket: !!socket, isConnected, sessionId });
     }
-  }, [socket, isConnected, sessionId, user, joinMeeting]);
+  }, [socket, isConnected, sessionId, effectiveUser, joinMeeting]);
 
   // Update backend when language changes (for real-time translation)
   const prevLanguageRef = useRef(language);
@@ -106,45 +116,13 @@ function SessionPage() {
       prevLanguageRef.current = language;
       console.log(`Language updated to: ${language}`);
     }
-  }, [socket, isConnected, sessionId, language, updateLanguage]);
+    // Debug: Expose for diagnostics
+    window.debugContext = { simulateCaption, socket, forceEmit: (text) => socket.emit("speech:monitor", { meetingId: sessionId, text, isFinal: true, language }) };
+  }, [socket, isConnected, sessionId, language, updateLanguage, simulateCaption]);
 
-  // Listen for incoming captions
+  // Socket event handlers
   useEffect(() => {
     if (!socket) return;
-
-    const handleCaption = (data) => {
-      setCaptions((prev) => {
-        const captionWithId = {
-          ...data,
-          _id: `${data.speakerUserId}-${Date.now()}`,
-          speakerName: data.speakerName || "Participant",
-        };
-
-        // If this is an interim caption (not final), replace any existing interim from same speaker
-        if (!data.isFinal) {
-          // Find the last caption from this speaker
-          const lastFromSpeaker = prev.findIndex(
-            (c) => c.speakerUserId === data.speakerUserId && !c.isFinal
-          );
-
-          if (lastFromSpeaker !== -1) {
-            // Replace the existing interim caption
-            const updated = [...prev];
-            updated[lastFromSpeaker] = captionWithId;
-            return updated;
-          }
-        }
-
-        // For final captions or first interim, add as new entry
-        // Also remove any interim captions from the same speaker when we get a final
-        let updated = data.isFinal
-          ? prev.filter((c) => !(c.speakerUserId === data.speakerUserId && !c.isFinal))
-          : prev;
-
-        updated = [...updated, captionWithId];
-        return updated.slice(-15); // Keep last 15
-      });
-    };
 
     const handleParticipantJoined = (data) => {
       setParticipants((prev) => {
@@ -172,13 +150,11 @@ function SessionPage() {
       });
     };
 
-    socket.on("caption:incoming", handleCaption);
     socket.on("participant:joined", handleParticipantJoined);
     socket.on("meeting:ended", handleMeetingEnded);
     socket.on("hand:raised", handleHandRaised);
 
     return () => {
-      socket.off("caption:incoming", handleCaption);
       socket.off("participant:joined", handleParticipantJoined);
       socket.off("meeting:ended", handleMeetingEnded);
       socket.off("hand:raised", handleHandRaised);
@@ -189,46 +165,8 @@ function SessionPage() {
 
   const [activeTab, setActiveTab] = useState('notes');
 
-  // Handle speech recognition results
-  useEffect(() => {
-    // Send final transcript as caption
-    if (transcript && transcript !== lastTranscriptRef.current) {
-      sendCaption(sessionId, {
-        text: transcript,
-        language: language,
-        isFinal: true,
-      });
-      lastTranscriptRef.current = transcript;
-      resetTranscript();
-    }
-  }, [transcript, sessionId, language, sendCaption, resetTranscript]);
-
-  // Send interim transcripts (throttled to prevent spam)
-  useEffect(() => {
-    if (interimTranscript && interimTranscript !== lastInterimRef.current) {
-      // Throttle interim captions to every 300ms
-      if (!interimThrottleRef.current) {
-        interimThrottleRef.current = setTimeout(() => {
-          if (interimTranscript) {
-            sendCaption(sessionId, {
-              text: interimTranscript,
-              language: language,
-              isFinal: false,
-            });
-            lastInterimRef.current = interimTranscript;
-          }
-          interimThrottleRef.current = null;
-        }, 300);
-      }
-    }
-
-    return () => {
-      if (interimThrottleRef.current) {
-        clearTimeout(interimThrottleRef.current);
-        interimThrottleRef.current = null;
-      }
-    };
-  }, [interimTranscript, sessionId, language, sendCaption]);
+  // Captions are now handled entirely by the useSpeechRecognition hook
+  // No need for duplicate transcript emission logic here
 
   // Redirect when session ends
   useEffect(() => {
@@ -295,14 +233,14 @@ function SessionPage() {
   }
 
   return (
-    <div className="h-screen bg-base-100 flex flex-col overflow-hidden">
-      <Navbar />
+    <div className="h-screen bg-neutral-900 flex flex-col overflow-hidden">
+      {/* Navbar hidden during call for extra space */}
 
       {/* Main Content with Resizable Panels */}
       <div className="flex-1 overflow-hidden relative">
         <PanelGroup autoSaveId="session-layout" direction="horizontal">
           {/* Left Panel - Tabs for Notes / Chat */}
-          <Panel defaultSize={30} minSize={20} className="m-2 glass-panel rounded-2xl overflow-hidden flex flex-col">
+          <Panel defaultSize={30} minSize={20} className="m-2 bg-base-100/60 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-none">
             <div className="flex border-b border-white/10">
               <button
                 className={`flex-1 p-3 text-sm font-bold flex items-center justify-center gap-2 transition-all duration-300 ${activeTab === 'notes' ? 'bg-white/10 text-primary border-b-2 border-primary backdrop-blur-md' : 'text-base-content/60 hover:bg-white/5'}`}
@@ -322,14 +260,15 @@ function SessionPage() {
             </div>
 
             <div className="flex-1 overflow-hidden relative">
-              {activeTab === 'notes' ? (
+              <div className={`absolute inset-0 flex flex-col ${activeTab === 'notes' ? 'z-10' : 'z-0 invisible'}`}>
                 <MeetingNotesPanel
                   meetingId={sessionId}
                   userId={user?.id}
                   userLanguage={language}
                   socket={socket}
                 />
-              ) : (
+              </div>
+              <div className={`absolute inset-0 flex flex-col ${activeTab === 'chat' ? 'z-10' : 'z-0 invisible'}`}>
                 <ChatPanel
                   meetingId={sessionId}
                   userId={user?.id}
@@ -337,7 +276,7 @@ function SessionPage() {
                   userLanguage={language}
                   socket={socket}
                 />
-              )}
+              </div>
             </div>
           </Panel>
 
@@ -346,9 +285,9 @@ function SessionPage() {
           </PanelResizeHandle>
 
           {/* Right Panel - Video & Controls */}
-          <Panel minSize={30} className="m-2 glass-panel rounded-2xl overflow-hidden flex flex-col">
+          <Panel minSize={30} className="m-2 bg-base-100/60 backdrop-blur-xl border border-white/10 rounded-2xl flex flex-col shadow-none">
             {/* Session Header */}
-            <div className="px-4 py-3 border-b border-white/10 bg-white/5 backdrop-blur-md">
+            <div className="px-4 py-3 border-b border-white/10 bg-white/5 backdrop-blur-md rounded-t-2xl relative z-50">
               <div className="flex items-center justify-between">
                 <div>
                   <h1 className="text-lg font-bold text-base-content">
@@ -383,7 +322,7 @@ function SessionPage() {
                       <GlobeIcon className="w-4 h-4" />
                       {language}
                     </label>
-                    <ul tabIndex={0} className="dropdown-content z-[2] menu p-2 shadow-xl bg-base-200/90 backdrop-blur-xl rounded-box w-52 border border-white/10">
+                    <ul tabIndex={0} className="dropdown-content z-[9999] menu p-2 shadow-xl bg-base-200/90 backdrop-blur-xl rounded-box w-52 border border-white/10">
                       {availableLanguages.map((lang) => (
                         <li key={lang.code}>
                           <button
@@ -431,7 +370,7 @@ function SessionPage() {
             </div>
 
             {/* Video Area */}
-            <div className="flex-1 relative overflow-hidden flex flex-col">
+            <div className="flex-1 relative overflow-hidden flex flex-col rounded-b-2xl">
               {streamClient && call ? (
                 <StreamVideo client={streamClient}>
                   <StreamTheme className="h-full w-full custom-stream-theme">
@@ -447,6 +386,8 @@ function SessionPage() {
                         isListening={isListening}
                         startListening={startListening}
                         stopListening={stopListening}
+                        speechError={speechError}
+
                       />
                     </StreamCall>
                   </StreamTheme>
@@ -463,7 +404,7 @@ function SessionPage() {
           </Panel>
         </PanelGroup>
       </div>
-    </div>
+    </div >
   );
 }
 
@@ -477,20 +418,95 @@ function ActiveMeetingView({
   language,
   isListening,
   startListening,
-  stopListening
+  stopListening,
+  speechError
 }) {
-  const { useCameraState, useMicrophoneState } = useCallStateHooks();
+  const { useCameraState, useMicrophoneState, useScreenShareState, useParticipantCount } = useCallStateHooks();
   const { camera, isMute: isCamMuted } = useCameraState();
   const { microphone, isMute: isMicMuted } = useMicrophoneState();
+  const { screenShare, isMute: isScreenShareDisabled } = useScreenShareState();
+  const participantCount = useParticipantCount();
+  const call = useCall();
+
+  const [isDeafened, setIsDeafened] = useState(false);
 
   const isCamOn = !isCamMuted;
   const isMicOn = !isMicMuted;
+  const isScreenSharing = !isScreenShareDisabled;
+
+  // Handle local audio output mute (Deafen) - Polling approach for performance
+  useEffect(() => {
+    const handleMute = () => {
+      const audioElements = document.querySelectorAll('audio');
+      audioElements.forEach(audio => {
+        if (audio.muted !== isDeafened) {
+          audio.muted = isDeafened;
+        }
+      });
+    };
+
+    // Initial check
+    handleMute();
+
+    // Poll every 2 seconds to catch new streams (lightweight)
+    const interval = setInterval(handleMute, 2000);
+
+    return () => clearInterval(interval);
+  }, [isDeafened]);
+
+  // Sync Speech Recognition with Mic State
+  useEffect(() => {
+    if (isMicOn) {
+      startListening();
+    } else {
+      stopListening();
+    }
+  }, [isMicOn, startListening, stopListening]);
+
+  // Restore device preferences on mount
+  const preferencesRestored = useRef(false);
+  useEffect(() => {
+    if (preferencesRestored.current) return;
+
+    if (microphone && camera) {
+      console.log("Devices available, checking preferences...");
+      const savedMicState = localStorage.getItem('micEnabled');
+      const savedCamState = localStorage.getItem('camEnabled');
+      console.log(`Preferences - Mic: ${savedMicState}, Cam: ${savedCamState}`);
+
+      if (savedMicState === 'false' && !microphone.isMute) {
+        console.log("Restoring Mic: OFF");
+        microphone.disable();
+        stopListening(); // Ensure speech recog stops
+      }
+
+      if (savedCamState === 'false' && !camera.isMute) {
+        console.log("Restoring Cam: OFF");
+        camera.disable();
+      }
+
+      preferencesRestored.current = true;
+    } else {
+      console.log("Devices not yet available for restore:", { microphone: !!microphone, camera: !!camera });
+    }
+  }, [microphone, camera, stopListening]);
 
   const toggleCamera = async () => {
     try {
       await camera?.toggle();
+      // Save new state (inverse of current mute state because we just toggled)
+      localStorage.setItem('camEnabled', isCamMuted ? 'true' : 'false');
     } catch (err) {
       console.error("Error toggling camera:", err);
+    }
+  };
+
+  const toggleScreenShare = async () => {
+    try {
+      await screenShare?.toggle();
+    } catch (err) {
+      console.error("Error toggling screen share:", err);
+      toast.error("Failed to share screen");
     }
   };
 
@@ -499,27 +515,50 @@ function ActiveMeetingView({
       await microphone?.toggle();
       if (microphone?.isMute) {
         stopListening();
+        localStorage.setItem('micEnabled', 'false');
       } else {
         startListening();
+        localStorage.setItem('micEnabled', 'true');
       }
     } catch (err) {
       console.error("Error toggling microphone:", err);
     }
   };
 
+  const toggleDeafen = () => {
+    setIsDeafened(!isDeafened);
+  };
+
   return (
     <div className="h-full flex flex-col bg-[#202124] relative">
+      {/* Error Alert for Captions */}
+      {speechError && showCaptions && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[110] bg-red-500/90 text-white px-4 py-2 rounded-full text-xs font-medium backdrop-blur-sm shadow-lg flex items-center gap-2 animate-fade-in-down">
+          <div className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center">!</div>
+          <span>Caption Error: {speechError === 'network' ? 'Speech Service Unreachable' : speechError}</span>
+        </div>
+      )}
       {/* Video Grid Area */}
       <div className="flex-1 relative overflow-hidden flex items-center justify-center p-4">
-        <SpeakerLayout />
+        <div
+          className="w-full h-full"
+          style={{
+            '--str-video__primary-color': 'transparent',
+            '--str-video__ring-color': 'transparent',
+            // Restore speaker border but make it subtle/inset if handled by CSS, 
+            // for now keep global variables neutral and use specific class overrides in index.css
+            '--str-video__speaker-border-color': 'transparent'
+          }}
+        >
+          <SpeakerLayout />
+        </div>
 
-        {/* Live Captions Overlay */}
+        {/* Live Captions Overlay - Positioned above bottom bar */}
         {showCaptions && (
-          <div className="absolute bottom-4 left-4 right-4 z-10 pointer-events-none">
+          <div className="absolute bottom-24 left-0 right-0 z-[9999] pointer-events-none flex justify-center px-4">
             <CaptionOverlay
               captions={captions}
               userLanguage={language}
-              isSpeaking={isListening}
             />
           </div>
         )}
@@ -531,9 +570,23 @@ function ActiveMeetingView({
           <span>{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
           <div className="w-px h-4 bg-white/20 mx-4" />
           <span>{sessionId}</span>
+          <div className="w-px h-4 bg-white/20 mx-4" />
+          <div className="flex items-center gap-2">
+            <UsersIcon className="w-4 h-4 text-white/70" />
+            <span>{participantCount}</span>
+          </div>
         </div>
 
         <div className="flex items-center gap-3">
+          {/* Deafen Button */}
+          <button
+            onClick={toggleDeafen}
+            className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 ${isDeafened ? 'bg-red-500 hover:bg-red-600 text-white shadow-lg' : 'bg-[#3c4043] hover:bg-[#474a4d] text-white border border-gray-600'}`}
+            title={isDeafened ? "Unmute incoming audio" : "Mute incoming audio (Deafen)"}
+          >
+            {isDeafened ? <VolumeXIcon className="w-5 h-5" /> : <Volume2Icon className="w-5 h-5" />}
+          </button>
+
           <button
             onClick={toggleMic}
             className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 ${!isMicOn ? 'bg-red-500 hover:bg-red-600 text-white shadow-lg' : 'bg-[#3c4043] hover:bg-[#474a4d] text-white border border-gray-600'}`}
@@ -559,8 +612,9 @@ function ActiveMeetingView({
           </button>
 
           <button
-            className="w-12 h-12 rounded-full flex items-center justify-center bg-[#3c4043] hover:bg-[#474a4d] text-white border border-gray-600 transition-all duration-200"
-            title="Present screen (Not fully implemented)"
+            onClick={toggleScreenShare}
+            className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 ${isScreenSharing ? 'bg-green-500 hover:bg-green-600 text-white shadow-lg' : 'bg-[#3c4043] hover:bg-[#474a4d] text-white border border-gray-600'}`}
+            title={isScreenSharing ? "Stop presenting" : "Present screen"}
           >
             <MonitorUp className="w-5 h-5" />
           </button>

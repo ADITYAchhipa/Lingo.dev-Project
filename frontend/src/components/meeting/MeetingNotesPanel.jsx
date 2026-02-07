@@ -24,6 +24,22 @@ function MeetingNotesPanel({
     const isTypingRef = useRef(false);
     const lastSentTextRef = useRef("");
 
+    // Stable refs for props to avoid Quill re-initialization
+    const socketRef = useRef(socket);
+    const meetingIdRef = useRef(meetingId);
+    const userIdRef = useRef(userId);
+    const userLanguageRef = useRef(userLanguage);
+    const onNoteChangeRef = useRef(onNoteChange);
+
+    // Keep refs up to date
+    useEffect(() => {
+        socketRef.current = socket;
+        meetingIdRef.current = meetingId;
+        userIdRef.current = userId;
+        userLanguageRef.current = userLanguage;
+        onNoteChangeRef.current = onNoteChange;
+    }, [socket, meetingId, userId, userLanguage, onNoteChange]);
+
     // Typing lock state (for UI display only)
     const [isLocked, setIsLocked] = useState(false);
 
@@ -35,16 +51,33 @@ function MeetingNotesPanel({
             theme: "snow",
             placeholder: t("meeting.notes"),
             modules: {
-                toolbar: [
-                    [{ header: [1, 2, 3, false] }],
-                    ["bold", "italic", "underline"],
-                    [{ list: "ordered" }, { list: "bullet" }],
-                    ["clean"],
-                ],
+                toolbar: {
+                    container: "#meeting-notes-toolbar",
+                },
             },
         });
 
         quillRef.current = quill;
+
+        // FETCH INITIAL NOTES
+        if (socket && meetingId && userLanguage) {
+            socket.emit("note:get", { meetingId, language: userLanguage });
+        }
+
+        const handleInitialNote = (data) => {
+            if (quillRef.current) {
+                const currentText = quillRef.current.getText().trim();
+                // Only overwrite if empty to avoid overwriting user input race condition
+                if (currentText.length === 0 && data.html) {
+                    // Use clipboard dangerouslyPasteHTML for HTML content
+                    quillRef.current.clipboard.dangerouslyPasteHTML(0, data.html);
+                }
+            }
+        };
+
+        if (socket) {
+            socket.on("note:initial", handleInitialNote);
+        }
 
         // Track focus state
         quill.root.addEventListener('focus', () => {
@@ -64,9 +97,9 @@ function MeetingNotesPanel({
             const html = quill.root.innerHTML;
 
             // Mark as typing immediately
-            if (!isTypingRef.current && socket && meetingId) {
+            if (!isTypingRef.current && socketRef.current && meetingIdRef.current) {
                 isTypingRef.current = true;
-                socket.emit("note:lock", { meetingId, userId });
+                socketRef.current.emit("note:lock", { meetingId: meetingIdRef.current, userId: userIdRef.current });
             }
 
             // Clear previous timers
@@ -79,29 +112,29 @@ function MeetingNotesPanel({
 
             // FAST debounce - 150ms for near real-time
             debounceTimerRef.current = setTimeout(() => {
-                if (socket && meetingId) {
+                if (socketRef.current && meetingIdRef.current) {
                     setSyncing(true);
                     lastSentTextRef.current = content.trim(); // Remember what we sent
-                    socket.emit("note:update", {
-                        meetingId,
+                    socketRef.current.emit("note:update", {
+                        meetingId: meetingIdRef.current,
                         plainText: content,
                         html: html,
-                        canonicalLanguage: userLanguage,
+                        canonicalLanguage: userLanguageRef.current,
                     });
 
                     setLastSaved(new Date());
                     setTimeout(() => setSyncing(false), 300);
                 }
 
-                if (onNoteChange) {
-                    onNoteChange(content, html);
+                if (onNoteChangeRef.current) {
+                    onNoteChangeRef.current(content, html);
                 }
             }, 150);
 
             // Release lock after 2 seconds of inactivity
             lockTimerRef.current = setTimeout(() => {
-                if (socket && meetingId) {
-                    socket.emit("note:unlock", { meetingId, userId });
+                if (socketRef.current && meetingIdRef.current) {
+                    socketRef.current.emit("note:unlock", { meetingId: meetingIdRef.current, userId: userIdRef.current });
                     isTypingRef.current = false;
                 }
             }, 2000);
@@ -116,7 +149,7 @@ function MeetingNotesPanel({
             }
             quillRef.current = null;
         };
-    }, [t, meetingId, userLanguage, socket, onNoteChange, userId]);
+    }, [t]); // Only recreate Quill when translation function changes
 
     // Listen for lock/unlock and translated notes
     useEffect(() => {
@@ -131,14 +164,19 @@ function MeetingNotesPanel({
             // CRITICAL: Don't update if:
             // 1. Editor has focus (user is actively typing)
             // 2. User is currently typing (ref-based check)
-            // 3. Incoming text matches what we last sent (echo prevention)
+            // 3. Incoming text matches what we last sent (echo prevention) - Backend now handles this, but keeping as safety
             // 4. Incoming text is the same as current content
+
+            // If we have focus or are actively typing, we generally ignore updates to prevent cursor jumps
+            // UNLESS it's a lock override or specific scenario, but for now safe to ignore
             if (hasFocusRef.current || isTypingRef.current) {
-                return; // User is actively editing, ignore incoming
+                return;
             }
 
+            // We can trust backend to not echo back raw text, so this check is less critical but good for redundancy
             if (incomingText === lastSentTextRef.current) {
-                return; // This is our own echo, ignore
+                // If backend is fixed to use socket.to, this might not be needed, but harmless to keep
+                return;
             }
 
             if (incomingText === currentText) {
@@ -178,11 +216,6 @@ function MeetingNotesPanel({
 
     return (
         <div className="h-full flex flex-col bg-base-100 rounded-lg overflow-hidden meeting-notes-container">
-            <style>{`
-                .meeting-notes-container .ql-toolbar ~ .ql-toolbar {
-                    display: none !important;
-                }
-            `}</style>
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-base-300 bg-base-200">
                 <div className="flex items-center gap-2">
@@ -223,11 +256,28 @@ function MeetingNotesPanel({
                 </div>
             </div>
 
+            {/* Explicit Toolbar Container */}
+            <div id="meeting-notes-toolbar" className="border-b border-base-300 bg-base-100/50">
+                <span className="ql-formats">
+                    <button className="ql-bold" aria-label="Bold"></button>
+                    <button className="ql-italic" aria-label="Italic"></button>
+                    <button className="ql-underline" aria-label="Underline"></button>
+                </span>
+                <span className="ql-formats">
+                    <button className="ql-list" value="ordered" aria-label="Ordered List"></button>
+                    <button className="ql-list" value="bullet" aria-label="Bullet List"></button>
+                </span>
+                <span className="ql-formats">
+                    <button className="ql-clean" aria-label="Clean Formatting"></button>
+                </span>
+            </div>
+
             {/* Editor Container - Using overlay for lock instead of quill.disable() */}
-            <div className="flex-1 overflow-auto p-4 relative">
+            <div className="flex-1 overflow-auto p-4 relative flex flex-col">
                 <div
                     ref={editorRef}
-                    className="min-h-[300px] bg-white rounded-lg border border-base-300 text-gray-900"
+                    className="flex-1 bg-white rounded-b-lg border-none text-gray-900"
+                    style={{ border: 'none' }}
                 ></div>
 
                 {/* Lock overlay - prevents interaction without breaking layout */}

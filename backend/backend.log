@@ -1,0 +1,800 @@
+nohup: ignoring input
+
+> judge-backend@1.0.0 start
+> node src/server.js
+
+✅ Lingo.dev SDK initialized
+✅ Stream.io client initialized
+✅ MongoDB connected successfully
+🚀 Server running on http://localhost:3000
+📡 Socket.IO server ready for connections
+Client connected: Hg_4Hs7uNPDc9jsKAAAB
+User Guest User 515 (user_1770403448201) joined meeting 69861f7f1fdc91c83939d11a [Lang: en-US]
+Client connected: rYz81HiN9ZeHSIFpAAAD
+User Guest User 879 (user_1769803429080) joined meeting 69861f7f1fdc91c83939d11a [Lang: en-US]
+Client connected: AadGoT6QLrn7M_jHAAAF
+User Guest User 879 (user_1769803429080) joined meeting 69863398c989c4dbb0e8c84c [Lang: en-US]
+Client connected: G55O-AqFVjKd5o6sAAAH
+User Guest User 897 (user_1769805335800) joined meeting 69861f7f1fdc91c83939d11a [Lang: en-US]
+Client disconnected: AadGoT6QLrn7M_jHAAAF
+Client disconnected: rYz81HiN9ZeHSIFpAAAD
+Client disconnected: Hg_4Hs7uNPDc9jsKAAAB
+Client disconnected: G55O-AqFVjKd5o6sAAAH
+Client connected: VWMicEFbW7IgwX0sAAAK
+Socket VWMicEFbW7IgwX0sAAAK subscribed to dashboard updates
+POST /api/sessions request received: { sessionName: 'Rebuild Verification' }
+Generated callId: 10646ece-850e-40df-a684-f1234a304278
+Session saved to DB: new ObjectId('69863961c24c8023412da31f')
+Broadcasted session:created for 69863961c24c8023412da31f
+Client disconnected: VWMicEFbW7IgwX0sAAAK
+Client connected: AjfOeojGkcsY296_AAAN
+Socket AjfOeojGkcsY296_AAAN subscribed to dashboard updates
+Client disconnected: AjfOeojGkcsY296_AAAN
+Client connected: zATr9-D6GgNwIbi0AAAQ
+Socket zATr9-D6GgNwIbi0AAAQ subscribed to dashboard updates
+Client disconnected: zATr9-D6GgNwIbi0AAAQ
+Client connected: 5M3OfDAopc1HB31cAAAT
+Socket 5M3OfDAopc1HB31cAAAT subscribed to dashboard updates
+Client disconnected: 5M3OfDAopc1HB31cAAAT
+Client connected: NIH6boed52Ik6Z3OAAAW
+Socket NIH6boed52Ik6Z3OAAAW subscribed to dashboard updates
+Client disconnected: NIH6boed52Ik6Z3OAAAW
+Client connected: uyfTWcoz2gu-UhrmAAAZ
+Socket uyfTWcoz2gu-UhrmAAAZ subscribed to dashboard updates
+POST /api/sessions request received: { sessionName: 'Rebuild Check' }
+Generated callId: dea2611d-9aaf-42e7-94f8-1ae6e16bb49e
+Session saved to DB: new ObjectId('69863acbc24c8023412da32d')
+Broadcasted session:created for 69863acbc24c8023412da32d
+Client disconnected: uyfTWcoz2gu-UhrmAAAZ
+Client connected: ibZMyUEYyeQMrmYHAAAc
+Socket ibZMyUEYyeQMrmYHAAAc subscribed to dashboard updates
+POST /api/sessions request received: { sessionName: 'Rebuild Final Verify' }
+Generated callId: 0d2ddeaf-0011-4d30-b7d9-7beb327699c0
+Session saved to DB: new ObjectId('69863b3dc24c8023412da333')
+Broadcasted session:created for 69863b3dc24c8023412da333
+Client disconnected: ibZMyUEYyeQMrmYHAAAc
+Client connected: 1UDRAjd6z4XJg607AAAf
+User Guest User 879 (user_1769803429080) joined meeting 69863b3dc24c8023412da333 [Lang: en-US]
+Client disconnected: 1UDRAjd6z4XJg607AAAf
+Client connected: rh0lXNTGuNb4Llf5AAAi
+Socket rh0lXNTGuNb4Llf5AAAi subscribed to dashboard updates
+Client disconnected: rh0lXNTGuNb4Llf5AAAi
+Client connected: mmwgAubF1uyAxcpYAAAl
+Socket mmwgAubF1uyAxcpYAAAl subscribed to dashboard updates
+Client disconnected: mmwgAubF1uyAxcpYAAAl
+Client connected: f2W7yL8A2nJGciovAAAo
+User Guest User 879 (user_1769803429080) joined meeting 69863b3dc24c8023412da333 [Lang: en-US]
+Client disconnected: f2W7yL8A2nJGciovAAAo
+Client connected: 1uQXAKBoZtHb6HfWAAAr
+User Guest User 897 (user_1769805335800) joined meeting 69861f7f1fdc91c83939d11a [Lang: en-US]
+Client disconnected: 1uQXAKBoZtHb6HfWAAAr
+Client connected: si0F3gZhF2QixV5IAAAu
+User Guest User 879 (user_1769803429080) joined meeting 69863b3dc24c8023412da333 [Lang: en-US]
+Client disconnected: si0F3gZhF2QixV5IAAAu
+Client connected: 4pwaaeBx5Sm5K6vtAAAx
+Socket 4pwaaeBx5Sm5K6vtAAAx subscribed to dashboard updates
+Client disconnected: 4pwaaeBx5Sm5K6vtAAAx
+Client connected: wWTsXhmSCgks7a-DAAA0
+Socket wWTsXhmSCgks7a-DAAA0 subscribed to dashboard updates
+POST /api/sessions request received: { sessionName: 'Final Check' }
+Generated callId: 36dcfa02-7e97-4ded-b56c-c5776d96a987
+Session saved to DB: new ObjectId('69863da4c24c8023412da343')
+Broadcasted session:created for 69863da4c24c8023412da343
+Client disconnected: wWTsXhmSCgks7a-DAAA0
+Client connected: VWGCfWPxG-p4zgH4AAA3
+User Guest User 879 (user_1769803429080) joined meeting 69863da4c24c8023412da343 [Lang: en-US]
+Client disconnected: VWGCfWPxG-p4zgH4AAA3
+Client connected: 4z9KVozs-K33wq0zAAA6
+Socket 4z9KVozs-K33wq0zAAA6 subscribed to dashboard updates
+Client disconnected: 4z9KVozs-K33wq0zAAA6
+Client connected: 7XHB5DyOG06GnGJJAAA9
+User Guest User 879 (user_1769803429080) joined meeting 69863da4c24c8023412da343 [Lang: en-US]
+Client disconnected: 7XHB5DyOG06GnGJJAAA9
+Client connected: _fM6EL-SxFOlveQoAABA
+User Guest User 879 (user_1769803429080) joined meeting 69863da4c24c8023412da343 [Lang: en-US]
+Client disconnected: _fM6EL-SxFOlveQoAABA
+Client connected: -o2Da7Cup57sARDJAABD
+User Guest User 879 (user_1769803429080) joined meeting 69863da4c24c8023412da343 [Lang: en-US]
+Client disconnected: -o2Da7Cup57sARDJAABD
+Client connected: Zg6YFav6Yhxup4i6AABG
+Socket Zg6YFav6Yhxup4i6AABG subscribed to dashboard updates
+Client disconnected: Zg6YFav6Yhxup4i6AABG
+Client connected: 3sDl_X77zky-ra-mAABJ
+User Guest User 879 (user_1769803429080) joined meeting 69863da4c24c8023412da343 [Lang: en-US]
+Client disconnected: 3sDl_X77zky-ra-mAABJ
+Client connected: W7Pn1MHzS1WSEUriAABM
+User Guest User 879 (user_1769803429080) joined meeting 69863da4c24c8023412da343 [Lang: en-US]
+Client disconnected: W7Pn1MHzS1WSEUriAABM
+Client connected: SUlxrm9fzUJRsDTBAABP
+Socket SUlxrm9fzUJRsDTBAABP subscribed to dashboard updates
+Client disconnected: SUlxrm9fzUJRsDTBAABP
+Client connected: yHtfSajWr0KsZiQLAABS
+User Guest User 879 (user_1769803429080) joined meeting 69863acbc24c8023412da32d [Lang: en-US]
+Client disconnected: yHtfSajWr0KsZiQLAABS
+Client connected: Yy31MFeK27TphbhsAABV
+User Guest User 879 (user_1769803429080) joined meeting 69863da4c24c8023412da343 [Lang: en-US]
+Client disconnected: Yy31MFeK27TphbhsAABV
+Client connected: rEsvQqmTEMbKvMXZAABY
+User Guest User 879 (user_1769803429080) joined meeting 69863da4c24c8023412da343 [Lang: en-US]
+User Guest User 879 (user_1769803429080) joined meeting 69863da4c24c8023412da343 [Lang: en-US]
+Client disconnected: rEsvQqmTEMbKvMXZAABY
+Client connected: DcV0nq5iqz3aidG2AABb
+Socket DcV0nq5iqz3aidG2AABb subscribed to dashboard updates
+POST /api/sessions request received: { sessionName: 'System Check' }
+Generated callId: 12503874-747d-4855-9b64-1029a7b261e0
+Session saved to DB: new ObjectId('69863f60c24c8023412da35c')
+Broadcasted session:created for 69863f60c24c8023412da35c
+Client disconnected: DcV0nq5iqz3aidG2AABb
+Client connected: xO8KNzucbbnYj8ChAABe
+User Guest User 879 (user_1769803429080) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+User Guest User 879 (user_1769803429080) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client connected: YiotB32rLio4gc8HAABh
+Socket YiotB32rLio4gc8HAABh subscribed to dashboard updates
+Client connected: qPNAG3ghooyHxQNeAABk
+User Guest User 879 (user_1769803429080) joined meeting 69861f7f1fdc91c83939d11a [Lang: en-US]
+Client disconnected: qPNAG3ghooyHxQNeAABk
+Client disconnected: YiotB32rLio4gc8HAABh
+Client connected: Xwr34_XVutsmZZ-jAABn
+User Guest User 897 (user_1769805335800) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+User Guest User 879 (user_1769803429080) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+User Guest User 897 (user_1769805335800) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+User Guest User 879 (user_1769803429080) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+User Guest User 897 (user_1769805335800) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client disconnected: xO8KNzucbbnYj8ChAABe
+Client connected: YKuvJGiWLJ5wvwt-AABq
+Socket YKuvJGiWLJ5wvwt-AABq subscribed to dashboard updates
+POST /api/sessions request received: { sessionName: 'Verified Session' }
+Generated callId: 9d72da70-23d2-4a6b-9489-8805aedca8d3
+Session saved to DB: new ObjectId('698641b9c24c8023412da405')
+Broadcasted session:created for 698641b9c24c8023412da405
+Client disconnected: YKuvJGiWLJ5wvwt-AABq
+Client connected: rib1Q4ATh8wEjXlAAABt
+User Guest User 879 (user_1769803429080) joined meeting 698641b9c24c8023412da405 [Lang: en-US]
+Client disconnected: rib1Q4ATh8wEjXlAAABt
+Client connected: Q1dXXTtigALJaROmAABw
+User Guest User 879 (user_1769803429080) joined meeting 698641b9c24c8023412da405 [Lang: en-US]
+User Guest User 879 (user_1769803429080) joined meeting 698641b9c24c8023412da405 [Lang: en-US]
+User Guest User 897 (user_1769805335800) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client disconnected: Q1dXXTtigALJaROmAABw
+Client connected: pf06zeFc6zvClb_1AABz
+User Guest User 879 (user_1769803429080) joined meeting 698641b9c24c8023412da405 [Lang: en-US]
+User Guest User 879 (user_1769803429080) joined meeting 698641b9c24c8023412da405 [Lang: en-US]
+User Guest User 897 (user_1769805335800) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client disconnected: pf06zeFc6zvClb_1AABz
+Client connected: eID1ODY154hnaXg0AAB2
+User Guest User 879 (user_1769803429080) joined meeting 698641b9c24c8023412da405 [Lang: en-US]
+User Guest User 879 (user_1769803429080) joined meeting 698641b9c24c8023412da405 [Lang: en-US]
+User Guest User 897 (user_1769805335800) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client disconnected: eID1ODY154hnaXg0AAB2
+Client connected: H9N51ut6TATHAgNoAAB5
+User Guest User 879 (user_1769803429080) joined meeting 698641b9c24c8023412da405 [Lang: en-US]
+Client disconnected: Xwr34_XVutsmZZ-jAABn
+Client connected: dGn2kPGlBaNFFeSvAAB8
+User Guest User 515 (user_1770403448201) joined meeting 69861f7f1fdc91c83939d11a [Lang: en-US]
+Client connected: bvM1McY2_c2MwOqlAAB_
+User Guest User 897 (user_1769805335800) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client disconnected: dGn2kPGlBaNFFeSvAAB8
+Client disconnected: bvM1McY2_c2MwOqlAAB_
+❌ Error fetching session: MongoServerSelectionError: connection <monitor> to 159.41.207.113:27017 timed out
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:196:22)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: connection <monitor> to 159.41.207.113:27017 timed out
+      at Timeout._onTimeout (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connection.js:126:26)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+❌ Error fetching session: MongoServerSelectionError: Socket 'secureConnect' timed out after 30413ms (connectTimeoutMS: 30000)
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:148:18)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 30413ms (connectTimeoutMS: 30000)
+      at TLSSocket.<anonymous> (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connect.js:288:20)
+      at Object.onceWrapper (node:events:622:28)
+      at TLSSocket.emit (node:events:508:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+❌ Error fetching session: MongoServerSelectionError: Socket 'secureConnect' timed out after 30108ms (connectTimeoutMS: 30000)
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:148:18)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 30108ms (connectTimeoutMS: 30000)
+      at TLSSocket.<anonymous> (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connect.js:288:20)
+      at Object.onceWrapper (node:events:622:28)
+      at TLSSocket.emit (node:events:508:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+❌ Error fetching session: MongoServerSelectionError: Socket 'secureConnect' timed out after 30311ms (connectTimeoutMS: 30000)
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:148:18)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 30311ms (connectTimeoutMS: 30000)
+      at TLSSocket.<anonymous> (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connect.js:288:20)
+      at Object.onceWrapper (node:events:622:28)
+      at TLSSocket.emit (node:events:508:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+❌ Error fetching session: MongoServerSelectionError: Socket 'secureConnect' timed out after 30145ms (connectTimeoutMS: 30000)
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:148:18)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 30145ms (connectTimeoutMS: 30000)
+      at TLSSocket.<anonymous> (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connect.js:288:20)
+      at Object.onceWrapper (node:events:622:28)
+      at TLSSocket.emit (node:events:508:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+❌ Error fetching session: MongoServerSelectionError: Socket 'secureConnect' timed out after 30390ms (connectTimeoutMS: 30000)
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:148:18)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 30390ms (connectTimeoutMS: 30000)
+      at TLSSocket.<anonymous> (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connect.js:288:20)
+      at Object.onceWrapper (node:events:622:28)
+      at TLSSocket.emit (node:events:508:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+❌ Error fetching session: MongoServerSelectionError: Socket 'secureConnect' timed out after 30172ms (connectTimeoutMS: 30000)
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:148:18)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 30172ms (connectTimeoutMS: 30000)
+      at TLSSocket.<anonymous> (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connect.js:288:20)
+      at Object.onceWrapper (node:events:622:28)
+      at TLSSocket.emit (node:events:508:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+❌ Error fetching session: MongoServerSelectionError: Socket 'secureConnect' timed out after 30468ms (connectTimeoutMS: 30000)
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:148:18)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 30468ms (connectTimeoutMS: 30000)
+      at TLSSocket.<anonymous> (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connect.js:288:20)
+      at Object.onceWrapper (node:events:622:28)
+      at TLSSocket.emit (node:events:508:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+❌ Error fetching session: MongoServerSelectionError: Socket 'secureConnect' timed out after 30070ms (connectTimeoutMS: 30000)
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:148:18)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 30070ms (connectTimeoutMS: 30000)
+      at TLSSocket.<anonymous> (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connect.js:288:20)
+      at Object.onceWrapper (node:events:622:28)
+      at TLSSocket.emit (node:events:508:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+❌ Error fetching session: MongoServerSelectionError: Socket 'secureConnect' timed out after 30237ms (connectTimeoutMS: 30000)
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:148:18)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 30237ms (connectTimeoutMS: 30000)
+      at TLSSocket.<anonymous> (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connect.js:288:20)
+      at Object.onceWrapper (node:events:622:28)
+      at TLSSocket.emit (node:events:508:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+❌ Error fetching session: MongoServerSelectionError: Socket 'secureConnect' timed out after 30244ms (connectTimeoutMS: 30000)
+    at Topology.selectServer (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/sdam/topology.js:327:38)
+    at async tryOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:148:18)
+    at async executeOperation (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/operations/execute_operation.js:78:16)
+    at async FindCursor._initialize (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/find_cursor.js:62:26)
+    at async FindCursor.cursorInit (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:632:27)
+    at async FindCursor.fetchBatch (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:666:13)
+    at async FindCursor.next (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cursor/abstract_cursor.js:342:17)
+    at async Collection.findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/collection.js:313:24)
+    at async model.Query._findOne (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:2710:15)
+    at async model.Query.exec (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongoose/lib/query.js:4627:63) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'ac-rqyrlvi-shard-00-00.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-01.lirmnzz.mongodb.net:27017' => [ServerDescription],
+      'ac-rqyrlvi-shard-00-02.lirmnzz.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-xhf9xz-shard-0',
+    maxElectionId: new ObjectId('7fffffff000000000000011b'),
+    maxSetVersion: 73,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: 30
+  },
+  code: undefined,
+  [cause]: MongoNetworkTimeoutError: Socket 'secureConnect' timed out after 30244ms (connectTimeoutMS: 30000)
+      at TLSSocket.<anonymous> (/home/knight/Desktop/hach_proj/coding_platform/backend/node_modules/mongodb/lib/cmap/connect.js:288:20)
+      at Object.onceWrapper (node:events:622:28)
+      at TLSSocket.emit (node:events:508:28)
+      at Socket._onTimeout (node:net:604:8)
+      at listOnTimeout (node:internal/timers:608:17)
+      at process.processTimers (node:internal/timers:543:7) {
+    errorLabelSet: Set(2) { 'ResetPool', 'InterruptInUseConnections' },
+    beforeHandshake: false,
+    [cause]: undefined
+  }
+}
+Client connected: 0z85V1C7TLS-uc5qAACC
+Socket 0z85V1C7TLS-uc5qAACC subscribed to dashboard updates
+POST /api/sessions request received: { sessionName: 'join adi' }
+Generated callId: a96a4fc4-195e-4e96-9aab-fe19b9f5b127
+Session saved to DB: new ObjectId('6986466cc24c8023412da4c9')
+Broadcasted session:created for 6986466cc24c8023412da4c9
+Client disconnected: 0z85V1C7TLS-uc5qAACC
+Client connected: vpxWAK6-qhsDOtUSAACF
+User Guest User 9 (user_1770407503109) joined meeting 6986466cc24c8023412da4c9 [Lang: en-US]
+User Guest User 879 (user_1769803429080) joined meeting 698641b9c24c8023412da405 [Lang: en-US]
+User Guest User 9 (user_1770407503109) joined meeting 6986466cc24c8023412da4c9 [Lang: en-US]
+Client connected: eQ1A9y9toJoci7NBAACI
+User Guest User 897 (user_1769805335800) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Error sending meeting minutes: Error: Meeting not found
+    at EmailService.sendMeetingMinutes (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/email.service.js:22:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:334:25)
+Error sending meeting minutes: Error: Meeting not found
+    at EmailService.sendMeetingMinutes (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/email.service.js:22:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:334:25)
+Client disconnected: vpxWAK6-qhsDOtUSAACF
+Client connected: WNW_BFEhVCvk1X9IAACL
+Socket WNW_BFEhVCvk1X9IAACL subscribed to dashboard updates
+Client disconnected: WNW_BFEhVCvk1X9IAACL
+Client connected: 5uDHNGVRLJaQsICUAACO
+User Guest User 9 (user_1770407503109) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client disconnected: 5uDHNGVRLJaQsICUAACO
+Client connected: GgObNJ1HeZSnomugAACR
+User Guest User 9 (user_1770407503109) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+User Guest User 879 (user_1769803429080) joined meeting 698641b9c24c8023412da405 [Lang: en-US]
+User Guest User 897 (user_1769805335800) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+User Guest User 9 (user_1770407503109) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client disconnected: GgObNJ1HeZSnomugAACR
+Client connected: DXDsXvG9EmLt-KMPAACU
+User Guest User 9 (user_1770407503109) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client disconnected: DXDsXvG9EmLt-KMPAACU
+Client connected: hrTTUCzeTHbYL20mAACW
+User Guest User 9 (user_1770407503109) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client disconnected: H9N51ut6TATHAgNoAAB5
+User Guest User 897 (user_1769805335800) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+User Guest User 9 (user_1770407503109) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client connected: 9bqUVMdjFrv0v-WVAACZ
+Socket 9bqUVMdjFrv0v-WVAACZ subscribed to dashboard updates
+Client disconnected: 9bqUVMdjFrv0v-WVAACZ
+Client connected: TYJviL6EbmlscIjKAACc
+User Guest User 166 (user_1770408449007) joined meeting 69863f60c24c8023412da35c [Lang: en-US]
+Client disconnected: hrTTUCzeTHbYL20mAACW
+User user_1769805335800 updated language to hi-IN in meeting 69863f60c24c8023412da35c
+Updated language for socket eQ1A9y9toJoci7NBAACI to hi-IN
+Lingo translation error (hi-IN->en-US): Maximum number of translated words of your free plan reached, Trying to translate 5 words, remaining 0 words. Please upgrade.
+Using fallback translation for en-US
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+Lingo translation error (hi-IN->en-US): Maximum number of translated words of your free plan reached, Trying to translate 1 words, remaining 0 words. Please upgrade.
+Using fallback translation for en-US
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+Lingo translation error (hi-IN->en-US): Maximum number of translated words of your free plan reached, Trying to translate 2 words, remaining 0 words. Please upgrade.
+Using fallback translation for en-US
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+Lingo translation error (hi-IN->en-US): Maximum number of translated words of your free plan reached, Trying to translate 2 words, remaining 0 words. Please upgrade.
+Using fallback translation for en-US
+User user_1769805335800 updated language to en-US in meeting 69863f60c24c8023412da35c
+Updated language for socket eQ1A9y9toJoci7NBAACI to en-US
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+User user_1769805335800 updated language to hi-IN in meeting 69863f60c24c8023412da35c
+Updated language for socket eQ1A9y9toJoci7NBAACI to hi-IN
+Lingo translation error (en-US->hi-IN): Maximum number of translated words of your free plan reached, Trying to translate 3 words, remaining 0 words. Please upgrade.
+Using fallback translation for hi-IN
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+Lingo translation error (hi-IN->en-US): Maximum number of translated words of your free plan reached, Trying to translate 10 words, remaining 0 words. Please upgrade.
+Using fallback translation for en-US
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+Lingo translation error (hi-IN->en-US): Maximum number of translated words of your free plan reached, Trying to translate 13 words, remaining 0 words. Please upgrade.
+Using fallback translation for en-US
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+Lingo translation error (hi-IN->en-US): Maximum number of translated words of your free plan reached, Trying to translate 3 words, remaining 0 words. Please upgrade.
+Using fallback translation for en-US
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+Lingo translation error (hi-IN->en-US): Maximum number of translated words of your free plan reached, Trying to translate 3 words, remaining 0 words. Please upgrade.
+Using fallback translation for en-US
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+Lingo translation error (hi-IN->en-US): Maximum number of translated words of your free plan reached, Trying to translate 10 words, remaining 0 words. Please upgrade.
+Using fallback translation for en-US
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+Lingo translation error (hi-IN->en-US): Maximum number of translated words of your free plan reached, Trying to translate 3 words, remaining 0 words. Please upgrade.
+Using fallback translation for en-US
+Error saving caption with translations: Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
+DB Save failed Error: Meeting not found
+    at CaptionsService.saveCaptionWithTranslations (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/services/captions.service.js:44:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Socket.<anonymous> (file:///home/knight/Desktop/hach_proj/coding_platform/backend/src/sockets/index.js:306:29)
