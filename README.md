@@ -4,10 +4,11 @@
 
 **Meetio** is a next-generation video conferencing platform built to eliminate language barriers. By integrating real-time translation into every aspect of the meeting experience—chat, live captions, and collaborative notes—we ensure that every participant can communicate naturally in their own language.
 
-## 📢 Project Demo 
+## 📢 Project Demo
 
 Check out the full project post here:  
-👉 [View on X (Twitter)]([https://x.com/adi576940/status/2020057870423990425](https://x.com/AdiChhipa/status/2020392316197040380))
+👉 [View on X (Twitter)](https://x.com/AdiChhipa/status/2020392316197040380)
+
 
 ## 🚀 Key Features
 
