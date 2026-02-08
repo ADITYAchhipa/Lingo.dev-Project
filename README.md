@@ -7,7 +7,7 @@
 ## 📢 Project Demo 
 
 Check out the full project post here:  
-👉 [View on X (Twitter)](https://x.com/adi576940/status/2020057870423990425)
+👉 [View on X (Twitter)]([https://x.com/adi576940/status/2020057870423990425](https://x.com/AdiChhipa/status/2020392316197040380))
 
 ## 🚀 Key Features
 
